@@ -18,7 +18,9 @@ class Department(models.Model):
 
 
 class Employee(models.Model):
-    full_name = models.CharField(max_length=300)
+    name = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
+    middle_name = models.CharField(max_length=100)
     photo = models.ImageField(upload_to='static/photos/')
     position = models.CharField(max_length=300)
     salary = models.PositiveIntegerField()
