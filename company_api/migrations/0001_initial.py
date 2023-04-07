@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
             name='Employee',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('full_name', models.CharField(max_length=300)),
+                ('full_name', models.CharField(max_length=300, null=True)),
                 ('photo', models.ImageField(upload_to='static/photos/')),
                 ('position', models.CharField(max_length=300)),
                 ('salary', models.PositiveIntegerField()),

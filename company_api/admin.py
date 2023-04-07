@@ -6,8 +6,17 @@ from .models import Employee, Department
 
 
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'position', 'salary', 'age', 'department')
-    search_fields = ('full_name', 'id')
+    list_display = (
+        'full_name',
+        'position',
+        'salary',
+        'age',
+        'department'
+    )
+    search_fields = (
+        'full_name',
+        'id'
+    )
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
@@ -15,11 +24,12 @@ class EmployeeAdmin(admin.ModelAdmin):
             full_name=Concat(
                 'name', Value(' '),
                 'surname', Value(' '),
-                'middle_name', Value(' ')
+                'middle_name',
             )
         )
         return queryset
 
+    @admin.display(ordering='full_name', description='ФИО сотрудника')
     def full_name(self, obj):
         return f'{obj.name} {obj.surname} {obj.middle_name}'
 
